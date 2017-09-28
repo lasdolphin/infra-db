@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/lasdolphin/dev/Otus/DevOps/HW6/infra/ansible/roles/db/molecule/default/.molecule","disabled":false,"__vagrantfile":true}}}

@@ -1,0 +1,12 @@
+---
+# tasks file for db
+- name: Show info about the env this host belongs to
+  debug:
+    msg: "This host is in {{ env }} environment!!!"
+
+- name: Show mongo_bind_ip
+  debug:
+    msg: "Variable  mongo_bind_ip = {{ mongo_bind_ip }}"
+
+- include: install_mongo.yml
+- include: config_mongo.yml
