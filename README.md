@@ -1,4 +1,9 @@
-Role Name
+[![Build Status](https://travis-ci.org/lasdolphin/infra-db.svg?branch=master)]
+(https://travis-ci.org/lasdolphin/infra-db)
+
+
+infa-db
+db role for infra rep
 =========
 
 A brief description of the role goes here.
