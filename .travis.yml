@@ -4,11 +4,11 @@ python:
 install:
 - pip install ansible==2.3.0 molecule apache-libcloud
 script:
-- molecule create
-- molecule converge
-- molecule verify
+- molecule --debug create
+- molecule --debug converge
+- molecule --debug verify
 after_script:
-- molecule destroy
+- molecule --debug destroy
 env:
   # matrix:
   # - GCE_CREDENTIALS_FILE="$(pwd)/credentials/otus-devops-56b15175f329.json"
