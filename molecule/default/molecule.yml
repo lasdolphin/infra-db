@@ -15,7 +15,7 @@ provisioner:
   lint:
     name: ansible-lint
 scenario:
-  name: gce
+  name: default
 verifier:
   name: testinfra
   lint:
