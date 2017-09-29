@@ -9,4 +9,6 @@ install:
   - pip install molecule
   # - pip install required driver (e.g. docker, python-vagrant, shade)
 script:
-  - molecule test
+  - molecule create
+  - molecule converge
+  - molecule verify
