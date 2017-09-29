@@ -1,4 +1,5 @@
-google_compute_engine.pub
+*.log
+*.tar
+*.pub
+credentials.json
 google_compute_engine
-credentials/*
-secrets.tar
