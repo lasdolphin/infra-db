@@ -1,3 +1,4 @@
 google_compute_engine.pub
 google_compute_engine
 credentials/*
+secrets.tar
