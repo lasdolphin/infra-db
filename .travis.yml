@@ -1,14 +1,17 @@
-sudo: required
 language: python
-services:
-  - docker
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-ce
+python:
+- '3.6'
 install:
-  - pip install molecule
-  - pip install docker
+- pip install ansible==2.3.0 molecule apache-libcloud
 script:
-  - molecule create
-  - molecule converge
-  - molecule verify
+- molecule --debug test
+after_script:
+- molecule --debug destroy
+env:
+  global:
+  - secure: jsA9ukZqIKZYbB7cSUpc5AOdcZ9Fto7p991EefAGJliIobwDgI+r7+I60EQ0aTSDUufZ+xlI0Zm3N2W1iAMSnZl0JOaK6Y5d5QF68VRfICrIYn6ytu3Ecold0kQ3b8Z18WvJK3bFi1yx25qtVHW6d6Yz0eqYEWlOo2y989He0yfJjMHOZjzlg2J8dq+M5jRAm/dFZZeAMq7mjX1NlTeQJE7veYS3CvVaeygCICuPIw7DGyIUkKjqacNV3wLDWqcgrWH91QTKGvDsjxBVg/aacTZvyPqPiKN3EbCzQuql0nrhC/VhqxYp74QbSFdF4tnP0igKzEMvsTpk2MWu2jC42wTQxqvm2pa49X7Lk4ss8FYUIbaAX/THXxj9oLawNx3M4B0qu6ZZwoPmR+FxRnvoi7o3+bu+cFqA1V2zUoFtdlHKkY/SA2f56tQAo6IubZyVVLxwrHBdCHTudBOkZi0Nvs7zblnlEa7sDIpxtGPjbFXkQS/oPvrSoQeEjS1bG3zD1sFbRtja6Z+m9u2GDFIZsI0nc/SZO+lNaJQxC/42WdEe+BrHK2Byxt7WTv1dOxSHK10oSZpUHWE4FNCPB2TPj65QG8LcaDoOzEVEfB+kdLjHk5RbnTyosMCU+d15/ZvMKf7EsEOl0pC0wbjTJlSbGi+2VOJdcm61X52e8UKYn2w=
+  - secure: pRWdrCBWVzfnY2BwpdJY7IXLaKqE93sRsh7TvWKPykx0fK4vLQNA3Du9YwApbvH4qzMIstf+XwUBmJZ+v9zaJo5cyusNR3Nu5eyMs9sogMT0nJC+liSdK7agI6nSJAFGla7cBs1nZvki4nGh2WoW6R6N/auVDkCvxeSJh4vtlvAs2RNmjmjbFytSg2eGuj2aC+JpyBdwEwByDR45oupy/g9x8eFoIhmnFfL//l5Io8BhCzmP/sLZLcIOora+vE4O4atcanpQYtyddi/RhR4Ox+5qL7cthlEa00JURZWhR/QNZ0+5VL/OuXyhABwODqQenEOAu2thKt58xObHkGUUWmaKf7IKTDAsDeq+0poVPHceBbTpw3gbKmFnRsBwuZMuqQxsBEq8VKeajF+mkm9VUj1KICOfJDEEkbih9QVL+0kAaf+hEVCALBZeKDYZ1OgExlkHMaUGS+aOu1pSUXBbbcE7tQMBWEBENI3ZLMxZQnzvZayk+Yt5y02TRtYK7WFblcvUjsDriB0PNxllp+9MipE8cjtV6XHgPWsDMwQ4BwoIk2XlMUkuV4B17r7flEnLr1JzkVlkaAbso9mjCx3YQuvaBSsrY1Uhp7h46gAJPO0Ev70CJYfhEkfuN1RE2D3/RkO75aoGoefL3em8SPTGfQu5gkIK4w7GnL9/sxQZhzc=
+  - secure: Kt0Zf8zgr1J6LPhWHS+1iNzF7YHp5dRI8GfU88yiDvr7HTTw7vAKkoZFAKQU+r5UG+Ugjqlx/IhLRS0KJ58luUoRdTQfD3UvuulZsySFN7ddm6Lr2UZoHDreY6XLK492WPwygnIVrRiwigq6zVESjScXsqFI1f7DG8ROkVMArjVWggpedhNOvIquqxJ+jNGVGPLBnGablKIq3CxGfjX/TQMg8BvOsXGT5N+S/08mJs8NV8HM7HUUk+60eiGRlpBs+1DN+DW27WwFi4UFoKgpDpnolzexDHkU9YowcQAnL3uBk3W8eTpr/cdL62Fi1pbvBpAq+wu1fb+qa6uhxxSSnKRCkI4NVxWFCNuIfwDYQ0hJDLklRlq3sHM+9m2o83fW7nxbIpqD2jY51T8eJlnpD5zULIYhkxFlKk1jMY3mtdxHKkcUxqgZlY4sa8PTndVUel7JSQMbFAmn5IqMPumYixp6Y7xzJ0IpQJ2V1NOx8TTijZgmu2loEKyy/cZcKP1S+vzeYgejWpWdb1nl344uAsHhvBnjsKfwzqHzrNuYKCtdxtVVckeSF+6VZs6AWBgIzxatCAN1K/8FCZRgU6ViNGF5Vn/+yH0xdugjG2bDi/X4I7osM/N9PzZNgXrHRzFiAyyQ3MLSz52yqJj3SZ4cfixiGfWN1Fz1G7ZM16yG1wk=
+before_install:
+- openssl aes-256-cbc -K $encrypted_e615753abb37_key -iv $encrypted_e615753abb37_iv
+  -in secrets.tar.enc -out secrets.tar -d
